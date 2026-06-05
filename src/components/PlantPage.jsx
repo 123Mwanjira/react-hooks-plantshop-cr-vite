@@ -1,15 +1,15 @@
-import React from "react";
-import NewPlantForm from "./NewPlantForm";
 import PlantList from "./PlantList";
-import Search from "./Search";
 
-function PlantPage() {
+function PlantPage({ plants, searchTerm, onSoldOut }) {
+  const filteredPlants = plants.filter((plant) =>
+    plant.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <main>
-      <NewPlantForm />
-      <Search />
-      <PlantList />
-    </main>
+    <PlantList
+      plants={filteredPlants}
+      onSoldOut={onSoldOut}
+    />
   );
 }
 
